@@ -3,6 +3,7 @@ const sequelize = require('../../config/database');
 
 const TabelaDados = sequelize.define('TabelaDados', {
     Data: DataTypes.TEXT,
+    Hora: DataTypes.TIME,
     Processo: DataTypes.TEXT,
     Orgao_julgador: DataTypes.TEXT,
     Partes: DataTypes.TEXT,
@@ -15,4 +16,4 @@ const TabelaDados = sequelize.define('TabelaDados', {
     timestamps: false,
 });
 
-module.exports = TabelaDados
+module.exports = TabelaDados;
