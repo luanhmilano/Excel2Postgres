@@ -1,6 +1,8 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../../config/database');
 
+// Modelo da tabela que será populada, nome das colunas de acordo com o arquivo excel
+
 const TabelaDados = sequelize.define('TabelaDados', {
     Data: DataTypes.TEXT,
     Hora: DataTypes.TIME,

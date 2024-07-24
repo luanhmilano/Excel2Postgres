@@ -16,10 +16,14 @@ const importData = async () => {
     const rawData = readExcelFile(filePath);
     const cleanedData = cleanDataSet(rawData);
 
+    // Número de linhas do arquivo excel original
     console.log(`Número de registros limpos: ${cleanedData.length}`);
     console.log(`Inserindo dados na tabela: ${TabelaDados.getTableName()}`);
 
-    
+    /*
+      - É o for que de fato impede a entrada de "rows-header"
+      - Caso o valor do campo "Data" seja "Data" também, é um cabeçalho e não uma linha.
+    */
 
     for (const item of cleanedData) {
       if (item.Data !== "Data") {

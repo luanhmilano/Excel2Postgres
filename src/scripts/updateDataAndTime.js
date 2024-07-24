@@ -43,7 +43,6 @@ const updateDataAndTime = async () => {
             const [day, month, year] = datePart.split('/');
             const formattedDate = `20${year}-${month}-${day}`;
 
-            //console.log(`Atualizando registro ID: ${record.id}, Data: ${formattedDate}, Hora: ${timePart}`);
       
             await TabelaDados.update(
               { Data: formattedDate, Hora: timePart },

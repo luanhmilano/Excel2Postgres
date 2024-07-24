@@ -1,9 +1,22 @@
+/*
+    isHeaderRow
+    - Não funcionou como eu esperava, mas vou deixar ai, ta atrapalhando ninguém.
+*/
+
 const isHeaderRow = (item) => {
     const possibleHeaders = ['Data', 'Processo', 'Órgão julgador', 'Partes', 'Classe', 'Tipo de audiência', 'Sala', 'Situação'];
     return possibleHeaders.every(header => Object.keys(item).includes(header));
 };
+
+/*
+    cleanData
+    - Recebe cada linha do Excel.
+    - Corrige quebra de linhas do arquivo original.
+    - Encontra o valor do campo que começa com "Todas as expressões", esta é a data/hora.
+    - Cria um objeto para cada linha, pegando os valores das colunas EMPTY, e o retorna.
+*/
   
-  const cleanData = (item) => {
+const cleanData = (item) => {
 
     const sanitizeText = (text) => {
       if (typeof text === 'string') {
@@ -27,13 +40,20 @@ const isHeaderRow = (item) => {
     };
 
     return cleanedItem;
-  };
+};
+
+/*
+    cleanDataSet
+    - Recebe o JSON do Excel.
+    - Faz um filter que impede a entrada de "row-headers" (mas não funciona).
+    - Retorna um array de objetos limpo.
+*/
   
-  const cleanDataSet = (dataSet) => {
+const cleanDataSet = (dataSet) => {
     return dataSet
       .filter(item => !isHeaderRow(item))
       .map(cleanData);
-  };
+};
   
-  module.exports = { cleanDataSet };
+module.exports = { cleanDataSet };
   
